@@ -3,44 +3,50 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="border-t bg-card mt-auto">
-      <div className="container py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="border-t bg-card/50 mt-auto">
+      <div className="container py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg gradient-navy flex items-center justify-center">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 rounded-xl gradient-navy flex items-center justify-center shadow-md shadow-primary/15">
                 <Shield className="w-4 h-4 text-primary-foreground" />
               </div>
-              <span className="font-bold text-foreground">ملجئك — Maljaak</span>
+              <span className="font-display font-bold text-foreground text-lg">ملجئك</span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               منصة إنسانية لمساعدة المجتمعات العربية في إيجاد الملاجئ القريبة بسرعة وأمان.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-foreground mb-3">روابط سريعة</h3>
-            <div className="space-y-2">
-              <Link to="/regions" className="block text-sm text-muted-foreground hover:text-secondary transition-colors">تصفح المناطق</Link>
-              <Link to="/search" className="block text-sm text-muted-foreground hover:text-secondary transition-colors">البحث عن ملجأ</Link>
-              <Link to="/about" className="block text-sm text-muted-foreground hover:text-secondary transition-colors">عن المنصة</Link>
-              <Link to="/privacy" className="block text-sm text-muted-foreground hover:text-secondary transition-colors">سياسة الخصوصية</Link>
+            <h3 className="font-display font-bold text-foreground mb-4">روابط سريعة</h3>
+            <div className="space-y-2.5">
+              {[
+                { to: "/regions", label: "تصفح المناطق" },
+                { to: "/search", label: "البحث عن ملجأ" },
+                { to: "/about", label: "عن المنصة" },
+                { to: "/privacy", label: "سياسة الخصوصية" },
+              ].map(link => (
+                <Link key={link.to} to={link.to} className="block text-sm text-muted-foreground hover:text-secondary transition-colors duration-200">
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
 
           <div>
-            <h3 className="font-semibold text-foreground mb-3">تنويه قانوني</h3>
+            <h3 className="font-display font-bold text-foreground mb-4">تنويه قانوني</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               المعلومات مقدمة من المجتمع ويجب اتباع تعليمات الجهات الرسمية. هذه المنصة لا تغني عن التوجيهات الرسمية.
             </p>
           </div>
         </div>
 
-        <div className="border-t mt-6 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} ملجئك — Maljaak. جميع الحقوق محفوظة.
+        <div className="border-t mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground/70">
+            © {new Date().getFullYear()} ملجئك — Maljaak
           </p>
-          <Link to="/donate" className="flex items-center gap-1 text-xs text-secondary hover:underline">
+          <Link to="/donate" className="flex items-center gap-1.5 text-xs text-secondary hover:underline underline-offset-4 font-medium">
             <Heart className="w-3 h-3" />
             ادعم المشروع
           </Link>
